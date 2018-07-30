@@ -19,7 +19,7 @@ export const UserHome = props => {
       <div className="landing-text-box">
         <div>
           <h1 id="landing-title">RecTrekker.</h1>
-          <h3 id="landing-sub-title">Welcome back, {email}</h3>
+          <h3 id="landing-sub-title">Hey there, {email}</h3>
         </div>
         <div>
           <Button color="teal" className="landing-button" size="large">

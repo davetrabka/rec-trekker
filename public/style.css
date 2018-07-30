@@ -56,17 +56,15 @@ form div {
 }
 
 .item {
-  padding: 1rem !important;
+  padding: 0.25rem 1rem !important;
 }
 
 /* Logo */
 
 #logo,
 #logo:hover {
-  font-family: 'Lato', sans-serif;
-  color: #00a1a1;
-  font-weight: bold;
-  font-size: 1.75rem;
+  max-height: 60px;
+  max-width: 60px;
 }
 
 /* Landing Page */
@@ -148,12 +146,24 @@ form div {
 
 /* LOG IN */
 
-.center-card {
-  margin: 0 auto !important;
+.authorization-form {
+  position: fixed;
+  top: 25%;
+  left: 35%;
 }
 
-#autheticate-card {
-  width: 25% !important;
-  display: flex;
-  justify-content: center;
+.auth-card-header {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  text-align: center;
+  color: #00a1a1;
+}
+
+.auth-card {
+  width: 40% !important;
+}
+
+.wide-button {
+  width: 100%;
+  margin: 0.3rem 0 !important;
 }

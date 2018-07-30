@@ -18,31 +18,31 @@ class Navbar extends Component {
 
     return !this.props.isLoggedIn ? (
       <Menu stackable id="menu">
-        <Menu.Item id="logo">
-          <img src="./img/logo.png" />
+        <Menu.Item>
+          <Link to="/">
+            <img id="logo" src="./img/logo.png" />
+          </Link>
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>
             <Button.Group>
-              <Button>
-                <Link to="/login" className="dark-grey-text">
-                  Log In
-                </Link>
-              </Button>
+              <Link to="/login" className="dark-grey-text">
+                <Button>Log In</Button>
+              </Link>
               <Button.Or text="or" />
-              <Button color="teal">
-                <Link to="/signup" className="white-text">
-                  Sign Up
-                </Link>
-              </Button>
+              <Link to="/signup" className="white-text">
+                <Button color="teal">Sign Up</Button>
+              </Link>
             </Button.Group>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
     ) : (
-      <Menu stackable>
-        <Menu.Item id="logo">
-          <img src="./img/logo.png" />
+      <Menu stackable id="menu">
+        <Menu.Item>
+          <Link to="/home">
+            <img id="logo" src="./img/logo.png" />
+          </Link>
         </Menu.Item>
         <Menu.Item
           name="plans"
@@ -70,11 +70,11 @@ class Navbar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item>
-            <Button basic color="teal" className="basic-button">
-              <a to="#" className="teal-text" onClick={this.props.handleLogout}>
+            <a to="#" className="teal-text" onClick={this.props.handleLogout}>
+              <Button basic color="teal" className="basic-button">
                 Log Out
-              </a>
-            </Button>
+              </Button>
+            </a>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
