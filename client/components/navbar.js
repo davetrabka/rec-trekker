@@ -1,56 +1,97 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Menu, Button } from 'semantic-ui-react';
+import { logout, me } from '../store';
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+class Navbar extends Component {
+  state = {};
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.id
+  componentDidMount() {
+    this.props.loadInitialData();
+  }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  render() {
+    const { activeItem } = this.state;
+
+    return !this.props.isLoggedIn ? (
+      <Menu stackable id="menu">
+        <Menu.Item id="logo">
+          <img src="./img/logo.png" />
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item>
+            <Button.Group>
+              <Button>
+                <Link to="/login" className="dark-grey-text">
+                  Log In
+                </Link>
+              </Button>
+              <Button.Or text="or" />
+              <Button color="teal">
+                <Link to="/signup" className="white-text">
+                  Sign Up
+                </Link>
+              </Button>
+            </Button.Group>
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
+    ) : (
+      <Menu stackable>
+        <Menu.Item id="logo">
+          <img src="./img/logo.png" />
+        </Menu.Item>
+        <Menu.Item
+          name="plans"
+          active={activeItem === 'plans'}
+          onClick={this.handleItemClick}>
+          <Link to="/plans" className="dark-grey-text">
+            My Plans
+          </Link>
+        </Menu.Item>
+        <Menu.Item
+          name="inspiration"
+          active={activeItem === 'inspiration'}
+          onClick={this.handleItemClick}>
+          <Link to="/inspiration" className="dark-grey-text">
+            Inspiration
+          </Link>
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item
+            name="account"
+            active={activeItem === 'account'}
+            onClick={this.handleItemClick}>
+            <Link to="/account" className="dark-grey-text">
+              My Account
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Button basic color="teal" className="basic-button">
+              <a to="#" className="teal-text" onClick={this.props.handleLogout}>
+                Log Out
+              </a>
+            </Button>
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
+    );
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
+const mapState = state => ({
+  isLoggedIn: !!state.user.id,
+});
 
-export default connect(mapState, mapDispatch)(Navbar)
+const mapDispatch = dispatch => ({
+  loadInitialData: () => dispatch(me()),
+  handleLogout: () => dispatch(logout()),
+});
 
-/**
- * PROP TYPES
- */
-Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
-}
+export default connect(
+  mapState,
+  mapDispatch
+)(Navbar);

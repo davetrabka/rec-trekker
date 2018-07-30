@@ -1,5 +1,6 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
+  background-color: rgb(248, 248, 248) !important;
 }
 
 a {
@@ -10,12 +11,149 @@ label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+#menu {
+  margin-bottom: 0rem !important;
+}
+
+/* Utility */
+
+.white-text,
+.white-text:hover {
+  color: #fff;
+}
+
+.dark-grey-text,
+.dark-grey-text:hover {
+  color: rgb(100, 100, 100);
+}
+
+.teal-text {
+  color: #00a1a1;
+}
+
+.dark-text,
+.dark-text-hover {
+  color: rgb(25, 25, 25);
+  font-weight: 400;
+}
+
+.spacer {
+  margin-top: 2rem;
+}
+
+.align-center {
+  vertical-align: center;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.item {
+  padding: 1rem !important;
+}
+
+/* Logo */
+
+#logo,
+#logo:hover {
+  font-family: 'Lato', sans-serif;
+  color: #00a1a1;
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+
+/* Landing Page */
+
+#background-image {
+  z-index: -1;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.landing-text-box {
+  position: absolute;
+  top: 11rem;
+  left: 15rem;
+}
+
+#landing-title {
+  font-size: 6rem;
+  color: rgb(36, 36, 36);
+  font-family: 'Chivo', sans-serif;
+}
+
+#landing-sub-title {
+  font-size: 1.5rem;
+  color: rgb(139, 139, 139);
+  text-transform: uppercase;
+  padding-left: 0.5rem;
+  margin-top: -1.75rem;
+  margin-bottom: 2rem;
+}
+
+.landing-button {
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
+  padding: 0.9rem !important;
+}
+
+.landing-button-text {
+  font-weight: 200;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+}
+
+.landing-description {
+  position: absolute;
+  bottom: 7rem;
+  left: 20rem;
+}
+
+.description-text {
+  font-family: 'Lato', sans-serif;
+  color: rgb(223, 223, 223);
+  font-size: 1.25rem;
+  margin: 0.5rem;
+}
+
+.hook {
+  font-family: 'Chivo', sans-serif;
+  font-size: 2.25rem;
+  color: #00a1a1;
+}
+
+.register-button {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 1.3rem !important;
+  text-transform: uppercase !important;
+  color: rgb(63, 63, 63) !important;
+  margin-left: 0.5rem !important;
+  margin-top: 1rem !important;
+  padding: 1rem 1.25rem !important;
+}
+
+/* LOG IN */
+
+.center-card {
+  margin: 0 auto !important;
+}
+
+#autheticate-card {
+  width: 25% !important;
+  display: flex;
+  justify-content: center;
 }
