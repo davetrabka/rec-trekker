@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 
 export const UserHome = props => {
-  const { email } = props;
+  const { firstName } = props;
 
   return (
     <React.Fragment>
@@ -16,10 +16,10 @@ export const UserHome = props => {
           alt="background image"
         />
       </div>
-      <div className="landing-text-box">
+      <div className="home-text-box">
         <div>
-          <h1 id="landing-title">RecTrekker.</h1>
-          <h3 id="landing-sub-title">Hey there, {email}</h3>
+          <h1 id="home-title">Hey there.</h1>
+          <h3 id="home-sub-title">Welcome back, {firstName}!</h3>
         </div>
         <div>
           <Button color="teal" className="landing-button" size="large">
@@ -40,7 +40,7 @@ export const UserHome = props => {
 
 const mapState = state => {
   return {
-    email: state.user.email,
+    firstName: state.user.firstName,
   };
 };
 

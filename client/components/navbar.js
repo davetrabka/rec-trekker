@@ -23,6 +23,47 @@ class Navbar extends Component {
             <img id="logo" src="./img/logo.png" />
           </Link>
         </Menu.Item>
+        <Menu.Item>
+          <Button
+            basic
+            circular
+            color="teal"
+            icon="facebook"
+            className="social-button"
+          />
+          <Button
+            basic
+            circular
+            as="a"
+            href="https://www.instagram.com/rectrekker"
+            target="_blank"
+            color="teal"
+            icon="instagram"
+            className="social-button"
+          />
+          <Button
+            basic
+            circular
+            color="teal"
+            icon="twitter"
+            className="social-button"
+          />
+          <Button
+            basic
+            circular
+            color="teal"
+            icon="linkedin"
+            className="social-button"
+          />
+        </Menu.Item>
+        <Menu.Item
+          name="inspiration"
+          active={activeItem === 'inspiration'}
+          onClick={this.handleItemClick}>
+          <Link to="/inspiration" className="dark-grey-text">
+            Inspiration
+          </Link>
+        </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>
             <Button.Group>

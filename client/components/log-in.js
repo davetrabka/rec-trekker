@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Card, Button, Form, Icon } from 'semantic-ui-react';
-import { signup } from '../store';
+import { login } from '../store';
 
-const SignUp = props => {
+const LogIn = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
@@ -18,23 +18,9 @@ const SignUp = props => {
       </div>
       <Container className="authorization-form">
         <Card className="auth-card">
-          <Card.Content className="auth-card-header">Sign Up</Card.Content>
+          <Card.Content className="auth-card-header">Log In</Card.Content>
           <Card.Content>
             <Form onSubmit={handleSubmit} name={name}>
-              <Form.Group widths="equal">
-                <Form.Field fluid>
-                  <label htmlFor="firstName">First Name</label>
-                  <input
-                    name="firstName"
-                    type="text"
-                    placeholder="First Name"
-                  />
-                </Form.Field>
-                <Form.Field fluid>
-                  <label htmlFor="lastName">Last Name</label>
-                  <input name="lastName" type="text" placeholder="Last Name" />
-                </Form.Field>
-              </Form.Group>
               <Form.Group widths="equal">
                 <Form.Field fluid>
                   <label htmlFor="email">Email</label>
@@ -63,10 +49,10 @@ const SignUp = props => {
   );
 };
 
-const mapSignup = state => {
+const mapLogin = state => {
   return {
-    name: 'signup',
-    displayName: 'Sign Up',
+    name: 'login',
+    displayName: 'Log In',
     error: state.user.error,
   };
 };
@@ -75,21 +61,19 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
-      const firstName = evt.target.firstName.value;
-      const lastName = evt.target.lastName.value;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
-      dispatch(signup(firstName, lastName, email, password));
+      dispatch(login(email, password));
     },
   };
 };
 
-export const Signup = connect(
-  mapSignup,
+export const Login = connect(
+  mapLogin,
   mapDispatch
-)(SignUp);
+)(LogIn);
 
-SignUp.propTypes = {
+LogIn.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,

@@ -43,11 +43,12 @@ const Landing = () => (
         costs! RecTrekker is the only way to travel with your tribe.
       </p>
       <Button
+        basic
         color="teal"
         className="description-text register-button"
-        size="large">
+        size="small">
         <Link to="/signup" className="white-text">
-          Register today!
+          Register for free today!
         </Link>
       </Button>
     </div>
