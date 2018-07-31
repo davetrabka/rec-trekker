@@ -17,12 +17,12 @@ install:
 before_script:
   - psql -c 'create database "rectrekker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
-# before_deploy:
-#   - npm run build-client # make the bundle
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: rectrekker
+  api_key:
+    secure: "TbvNdhOK6PcBVrFc7izLHTYEh6XdETEQ8e+9EIfI7wkxMWzFDiGjO8RMGN0mJap6urLImmCyid15LNjH5k9ZbSsMt397TVC0++Ot29V7NvVfKfA933FN7LqKgzUnFtfJJahDC7irrnyDFpc8WvH1Qh4Fz2wm1XYLDSWw9SplD1oQ33A1kk90LCgyYpMFYix/7tNEuBb/CkUy+4IIUFE/FuQQW5PLolua5MqIhIsQa5ub/U996tDOudE8rvA6FAvttE1VULyNRLbHEsdQF9zNBccEG1vWN/tDNPq6GnkwLFXfESn3fnKhlOyeDAxZjxviKm/66vHkaLRxwKEDrAOkhBBo3HbFKRjjH87WdABYvM1IcsGWYEFgqoGjXpDYCJKg7V1Cti7MLnl0gZF7bK8iHNCpt0zXPE1vBJVbacE/KVY+wp26+dZezcWqEXrHAiiNxWC02lFGkpszfUvuQ7IAix+hj1eiowOjBE332M6fu2S2RAjokyYeRYSkQiKYz94+y2JiCMeWpMgkW0M+R7ber5TkZyocvUeVNAj+R0l1405yNna7QbSlrHBvvXezk9znnbHjylbQj0h4UDsvREM3p27S80wZg+xQXnqDh9l8l1zmP8vJ4yac0Di8P6cH7jbCjD4QnKGhO5cAbUTupPexZO3Km2vu4lKO+c1AMITC9qM="
