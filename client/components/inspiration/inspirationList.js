@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Card, Button, Icon, Item } from 'semantic-ui-react';
+import { Container, Card, Button, Item } from 'semantic-ui-react';
 import ArticleCard from './article-card';
 import { gotArticles } from '../../store/article';
 import { me } from '../../store/user';

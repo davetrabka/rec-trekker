@@ -23,14 +23,13 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
       const email = profile.emails[0].value;
 
       User.find({ where: { googleId } })
-        .then(
-          foundUser =>
-            foundUser
-              ? done(null, foundUser)
-              : User.create({ firstName, lastName, email, googleId }).then(
-                  createdUser => done(null, createdUser)
-                )
-        )
+        .then(foundUser => {
+          foundUser
+            ? done(null, foundUser)
+            : User.create({ firstName, lastName, email, googleId }).then(
+                createdUser => done(null, createdUser)
+              );
+        })
         .catch(done);
     }
   );
