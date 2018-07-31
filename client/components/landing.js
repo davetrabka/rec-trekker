@@ -38,7 +38,7 @@ const Landing = () => (
       </p>
       <div>
         <Button basic color="teal" className="landing-button" size="large">
-          <Link to="/plan" className="white-text landing-button-text">
+          <Link to="/plans" className="white-text landing-button-text">
             Plan Something
           </Link>
         </Button>
