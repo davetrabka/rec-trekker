@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Card, Button, Form, Icon } from 'semantic-ui-react';
-import { login } from '../store';
+import { login } from '../../store';
 
 const LogIn = props => {
   const { name, displayName, handleSubmit, error } = props;
@@ -22,11 +22,11 @@ const LogIn = props => {
           <Card.Content>
             <Form onSubmit={handleSubmit} name={name}>
               <Form.Group widths="equal">
-                <Form.Field fluid>
+                <Form.Field>
                   <label htmlFor="email">Email</label>
                   <input name="email" type="text" placeholder="Email" />
                 </Form.Field>
-                <Form.Field fluid>
+                <Form.Field>
                   <label htmlFor="password">Password</label>
                   <input name="password" type="text" placeholder="Password" />
                 </Form.Field>
@@ -68,7 +68,7 @@ const mapDispatch = dispatch => {
   };
 };
 
-export const Login = connect(
+export default connect(
   mapLogin,
   mapDispatch
 )(LogIn);

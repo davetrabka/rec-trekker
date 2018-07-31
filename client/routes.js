@@ -8,6 +8,7 @@ import {
   UserHome,
   Landing,
   InspirationList,
+  Article,
 } from './components';
 import { me } from './store';
 
@@ -25,7 +26,8 @@ class Routes extends Component {
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/inspiration" component={InspirationList} />
+        <Route exact path="/articles" component={InspirationList} />
+        <Route exact path="/articles/:id" component={Article} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

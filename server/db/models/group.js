@@ -8,6 +8,7 @@ const Group = db.define('groups', {
   },
   public: {
     type: Sequelize.BOOLEAN,
+    defaultValue: false,
   },
   description: {
     type: Sequelize.TEXT,

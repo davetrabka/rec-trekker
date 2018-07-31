@@ -1,16 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 const Landing = () => (
   <React.Fragment>
-    <div>
-      <img
-        id="background-image"
-        src="./img/landing-background.jpg"
-        alt="background image"
-      />
-    </div>
+    <img
+      id="background-image"
+      src="./img/landing-background.jpg"
+      alt="background image"
+    />
     <div className="landing-text-box">
       <div>
         <h1 id="landing-title">RecTrekker.</h1>
@@ -19,18 +17,14 @@ const Landing = () => (
           <span className="dark-grey-text">action</span>.
         </h3>
       </div>
-      <div>
-        <Button color="teal" className="landing-button" size="large">
-          <Link to="/plan" className="white-text landing-button-text">
-            Plan Something
-          </Link>
-        </Button>
-        <Button color="teal" className="landing-button" size="large">
-          <Link to="/inspiration" className="white-text landing-button-text">
-            Get Inspired
-          </Link>
-        </Button>
-      </div>
+      <Button
+        color="teal"
+        className="description-text landing-button"
+        size="medium">
+        <Link to="/signup" className="white-text">
+          Register for free!
+        </Link>
+      </Button>
     </div>
     <div className="landing-description">
       <p className="description-text hook">Feeling stir crazy?</p>
@@ -42,15 +36,18 @@ const Landing = () => (
         Invite your friends, see who's in, pick dates, and even split up your
         costs! RecTrekker is the only way to travel with your tribe.
       </p>
-      <Button
-        basic
-        color="teal"
-        className="description-text register-button"
-        size="small">
-        <Link to="/signup" className="white-text">
-          Register for free today!
-        </Link>
-      </Button>
+      <div>
+        <Button basic color="teal" className="landing-button" size="large">
+          <Link to="/plan" className="white-text landing-button-text">
+            Plan Something
+          </Link>
+        </Button>
+        <Button basic color="teal" className="landing-button" size="large">
+          <Link to="/articles" className="white-text landing-button-text">
+            Get Inspired
+          </Link>
+        </Button>
+      </div>
     </div>
   </React.Fragment>
 );

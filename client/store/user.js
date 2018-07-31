@@ -48,7 +48,7 @@ export const logout = () => dispatch =>
     .post('/auth/logout')
     .then(_ => {
       dispatch(removeUser());
-      history.push('/');
+      history.push('/login');
     })
     .catch(err => console.log(err));
 

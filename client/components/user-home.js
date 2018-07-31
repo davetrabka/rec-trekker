@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
@@ -16,10 +15,13 @@ export const UserHome = props => {
           alt="background image"
         />
       </div>
-      <div className="home-text-box">
+      <div className="landing-text-box">
         <div>
-          <h1 id="home-title">Hey there.</h1>
-          <h3 id="home-sub-title">Welcome back, {firstName}!</h3>
+          <h1 id="landing-title">Welcome!</h1>
+          <h2 id="landing-sub-title">
+            Ready to get started,{' '}
+            <span className="dark-grey-text">{firstName}</span>?
+          </h2>
         </div>
         <div>
           <Button color="teal" className="landing-button" size="large">
@@ -28,7 +30,7 @@ export const UserHome = props => {
             </Link>
           </Button>
           <Button color="teal" className="landing-button" size="large">
-            <Link to="/inspiration" className="white-text landing-button-text">
+            <Link to="/articles" className="white-text landing-button-text">
               Get Inspired
             </Link>
           </Button>
@@ -45,7 +47,3 @@ const mapState = state => {
 };
 
 export default connect(mapState)(UserHome);
-
-UserHome.propTypes = {
-  email: PropTypes.string,
-};
