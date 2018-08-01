@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Card, Item, Divider, Icon } from 'semantic-ui-react';
+import {
+  Container,
+  Card,
+  Item,
+  Divider,
+  Icon,
+  Loader,
+} from 'semantic-ui-react';
 import { gotOneArticle } from '../../store/article';
 import ArticleComments from './comments';
 
 class Article extends Component {
+  state = { isLoading: true };
+
   componentDidMount = async () => {
     const path = window.location.pathname.split('/');
     const articleId = path[path.length - 1];
     await this.props.gotOneArticle(articleId);
+    this.setState({ isLoading: false });
   };
 
   render() {
     let { id, title, content, createdAt, user } = this.props.currArticle;
     let authorName = user ? `${user.firstName} ${user.lastName}` : 'Anonymous';
 
-    return (
+    return this.state.isLoading ? (
+      <div>
+        <Loader active inline="centered" size="massive" className="loader" />
+        <img
+          id="background-image"
+          src="/img/ocean.jpeg"
+          alt="background image"
+        />
+      </div>
+    ) : (
       <Container text>
         <img
           id="background-image"

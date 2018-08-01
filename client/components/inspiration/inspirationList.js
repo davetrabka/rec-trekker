@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Card, Button, Item } from 'semantic-ui-react';
+import { Container, Card, Button, Item, Loader } from 'semantic-ui-react';
 import ArticleCard from './article-card';
 import { gotArticles } from '../../store/article';
 import { me } from '../../store/user';
 
 class InspirationList extends Component {
+  state = { isLoading: true };
+
   componentDidMount = async () => {
     await this.props.loadInitialData();
     await this.props.fetchArticles();
+    this.setState({ isLoading: false });
   };
 
   render() {
     return (
       <Container>
+        {this.state.isLoading ? (
+          <div>
+            <Loader
+              active
+              inline="centered"
+              size="massive"
+              className="loader"
+            />
+            <img
+              id="background-image"
+              src="./img/surfing.jpeg"
+              alt="background image"
+            />
+          </div>
+        ) : (
+          ''
+        )}
         <img
           id="background-image"
           src="./img/surfing.jpeg"
@@ -29,7 +49,7 @@ class InspirationList extends Component {
         ) : (
           ''
         )}
-        {!this.props.articles.length ? (
+        {!this.props.articles.length && !this.state.isLoading ? (
           <Card fluid className="no-data-notification">
             <Item>
               <Item.Content>

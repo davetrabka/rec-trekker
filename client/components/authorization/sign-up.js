@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, Card, Button, Form, Icon } from 'semantic-ui-react';
+import { Container, Card, Button, Form } from 'semantic-ui-react';
 import { signup } from '../../store';
 
 const SignUp = props => {
-  const { name, displayName, handleSubmit, error } = props;
+  const { name, handleSubmit, error } = props;
 
   return (
     <div>
@@ -45,17 +45,34 @@ const SignUp = props => {
                   <input name="password" type="text" placeholder="Password" />
                 </Form.Field>
               </Form.Group>
-              <Button color="teal" type="submit" className="wide-button">
-                <Icon name="send" />
-                {displayName} with Username
-              </Button>
+              <Button
+                color="teal"
+                content="Sign Up with Username & Password"
+                labelPosition="left"
+                icon="user"
+                type="submit"
+                className="wide-button"
+              />
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
-            <Button className="wide-button">
-              <a href="/auth/google" className="teal-text">
-                <Icon name="google" /> {displayName} with Google
-              </a>
-            </Button>
+            <div className="flex-space-between">
+              <Button
+                as="a"
+                href="/auth/google"
+                className="half-button"
+                labelPosition="left"
+                content="Sign Up with Google"
+                icon="google"
+              />
+              <Button
+                as="a"
+                href="/auth/facebook"
+                className="half-button"
+                labelPosition="left"
+                content="Sign Up with Facebook"
+                icon="facebook"
+              />
+            </div>
           </Card.Content>
         </Card>
       </Container>

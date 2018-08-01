@@ -31,17 +31,34 @@ const LogIn = props => {
                   <input name="password" type="text" placeholder="Password" />
                 </Form.Field>
               </Form.Group>
-              <Button color="teal" type="submit" className="wide-button">
-                <Icon name="send" />
-                {displayName} with Username
-              </Button>
+              <Button
+                color="teal"
+                content="Log In with Username & Password"
+                labelPosition="left"
+                icon="user"
+                type="submit"
+                className="wide-button"
+              />
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
-            <Button className="wide-button">
-              <a href="/auth/google" className="teal-text">
-                <Icon name="google" /> {displayName} with Google
-              </a>
-            </Button>
+            <div className="flex-space-between">
+              <Button
+                as="a"
+                href="/auth/google"
+                className="half-button"
+                labelPosition="left"
+                content="Log In with Google"
+                icon="google"
+              />
+              <Button
+                as="a"
+                href="/auth/facebook"
+                className="half-button"
+                labelPosition="left"
+                content="Log In with Facebook"
+                icon="facebook"
+              />
+            </div>
           </Card.Content>
         </Card>
       </Container>
