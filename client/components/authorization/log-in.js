@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, Card, Button, Form, Icon } from 'semantic-ui-react';
+import { Container, Card, Button, Form } from 'semantic-ui-react';
 import { login } from '../../store';
 
 const LogIn = props => {
-  const { name, displayName, handleSubmit, error } = props;
+  const { name, handleSubmit, error } = props;
 
   return (
     <div>
@@ -92,7 +92,6 @@ export default connect(
 
 LogIn.propTypes = {
   name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.object,
 };

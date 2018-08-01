@@ -11,10 +11,10 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:slug', async (req, res, next) => {
   try {
     const article = await Article.findOne({
-      where: { id: req.params.id },
+      where: { slug: req.params.slug },
       include: [{ all: true }],
     });
     res.json(article);
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/:id/new-comment', async (req, res, next) => {
+router.post('/:slug/new-comment', async (req, res, next) => {
   try {
     const comment = await Comment.create(req.body);
     res.json(comment);

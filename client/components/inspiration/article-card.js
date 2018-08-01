@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Item, Button, Card, Icon, Divider } from 'semantic-ui-react';
 
 const ArticleCard = props => {
-  const { title, id, preview, createdAt } = props.article;
+  const { title, slug, preview, createdAt } = props.article;
   let authorName = props.article.user
     ? props.article.user.firstName
     : 'Anonymous';
@@ -35,7 +35,7 @@ const ArticleCard = props => {
       </Item.Group>
       <Card.Content extra className="flex-right white-text">
         <Button color="teal" size="small">
-          <Link to={`/articles/${id}`}>
+          <Link to={`/articles/${slug}`}>
             <p className="white-text">
               CONTINUE READING <Icon name="arrow alternate circle right" />
             </p>

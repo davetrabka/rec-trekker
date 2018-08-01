@@ -6,6 +6,10 @@ const Article = db.define('article', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  slug: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   preview: {
     type: Sequelize.TEXT,
     allowNull: false,
@@ -16,8 +20,16 @@ const Article = db.define('article', {
   },
 });
 
-module.exports = Article;
-
-Article.beforeValidate(article => {
+const generateSlugAndPreview = article => {
   article.preview = article.content.slice(0, 300) + '...';
-});
+  article.slug = article.title
+    .replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()@\+\?><\[\]\+]/g, '')
+    .toLowerCase()
+    .split(' ')
+    .join('-');
+};
+
+Article.beforeValidate(generateSlugAndPreview);
+Article.beforeUpdate(generateSlugAndPreview);
+
+module.exports = Article;

@@ -37,10 +37,7 @@ if (!process.env.FACEBOOK_CLIENT_ID || !process.env.FACEBOOK_CLIENT_SECRET) {
 
   passport.use(strategy);
 
-  router.get(
-    '/',
-    passport.authenticate('facebook', { scope: 'public_profile,email' })
-  );
+  router.get('/', passport.authenticate('facebook', { scope: 'email' }));
 
   router.get(
     '/callback',

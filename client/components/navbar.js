@@ -67,7 +67,9 @@ class Navbar extends Component {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/account" className="dark-grey-text">
+              <Link
+                to={`/users/${this.props.userId}`}
+                className="dark-grey-text">
                 My Account
               </Link>
             </Menu.Item>
@@ -89,6 +91,7 @@ class Navbar extends Component {
 }
 
 const mapState = state => ({
+  userId: state.user.id,
   isLoggedIn: !!state.user.id,
 });
 

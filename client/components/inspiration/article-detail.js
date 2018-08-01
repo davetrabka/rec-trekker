@@ -16,8 +16,8 @@ class Article extends Component {
 
   componentDidMount = async () => {
     const path = window.location.pathname.split('/');
-    const articleId = path[path.length - 1];
-    await this.props.gotOneArticle(articleId);
+    const slug = path[path.length - 1];
+    await this.props.gotOneArticle(slug);
     this.setState({ isLoading: false });
   };
 

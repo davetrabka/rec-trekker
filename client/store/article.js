@@ -24,9 +24,9 @@ export const gotArticles = () => async dispatch => {
   }
 };
 
-export const gotOneArticle = id => async dispatch => {
+export const gotOneArticle = slug => async dispatch => {
   try {
-    const { data } = await axios.get(`/api/articles/${id}`);
+    const { data } = await axios.get(`/api/articles/${slug}`);
     dispatch(getOneArticle(data));
   } catch (error) {
     console.error(error);
@@ -44,7 +44,10 @@ export const postedArticle = article => async dispatch => {
 
 export const postedArticleComment = comment => async dispatch => {
   try {
-    const { data } = await axios.post('/api/articles/:id/new-comment', comment);
+    const { data } = await axios.post(
+      '/api/articles/:slug/new-comment',
+      comment
+    );
     dispatch(postArticleComment(data));
   } catch (error) {
     console.error(error);

@@ -168,7 +168,6 @@ form div {
 .auth-card-header {
   font-size: 1.5rem !important;
   font-weight: bold;
-  text-align: center;
   color: #00a1a1;
 }
 
@@ -233,4 +232,11 @@ form div {
 
 .reply.form textarea {
   height: 5em !important;
+}
+
+/* User Account */
+
+.edit-pencil {
+  font-size: 1.5rem !important;
+  text-align: right !important;
 }
