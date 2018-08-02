@@ -32,16 +32,14 @@ class UserAccount extends Component {
   };
 
   render() {
-    const { firstName, lastName, email } = this.state.user;
+    const { firstName, lastName, email, password } = this.state.user;
     return (
       <div>
-        <div>
-          <img
-            id="background-image"
-            src="/img/forest.jpeg"
-            alt="background image"
-          />
-        </div>
+        <img
+          id="background-image"
+          src="/img/forest.jpeg"
+          alt="background image"
+        />
         <Container className="authorization-form">
           <Card className="auth-card">
             <Card.Content className="auth-card-header">My Account</Card.Content>
@@ -85,8 +83,9 @@ class UserAccount extends Component {
                     <label htmlFor="password">Password</label>
                     <input
                       name="password"
-                      type="text"
-                      value="**********"
+                      type="password"
+                      value={password}
+                      placeholder="•••••••••"
                       onChange={this.handleChange}
                       disabled={!this.state.editing}
                     />

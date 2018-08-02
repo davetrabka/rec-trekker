@@ -14,10 +14,10 @@ import ArticleComments from './comments';
 class Article extends Component {
   state = { isLoading: true };
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const path = window.location.pathname.split('/');
     const slug = path[path.length - 1];
-    await this.props.gotOneArticle(slug);
+    this.props.gotOneArticle(slug);
     this.setState({ isLoading: false });
   };
 

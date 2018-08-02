@@ -11,8 +11,7 @@ class ArticleComments extends Component {
 
   componentDidMount = async () => {
     await this.props.loadInitialData();
-    const path = window.location.pathname.split('/');
-    const articleId = path[path.length - 1];
+    const articleId = this.props.articleId;
     await this.props.gotOneArticle(articleId);
   };
 
@@ -22,13 +21,13 @@ class ArticleComments extends Component {
     });
   };
 
-  handleSubmit = async evt => {
+  handleSubmit = evt => {
     evt.preventDefault();
     const comment = this.state.newComment;
     const authorName = this.props.authorName;
     const articleId = this.props.currArticle.id;
-    await this.props.postedArticleComment({ comment, authorName, articleId });
-    await this.props.gotOneArticle(articleId);
+    this.props.postedArticleComment({ comment, authorName, articleId });
+    this.props.gotOneArticle(articleId);
     this.setState({ newComment: '' });
   };
 
@@ -39,7 +38,6 @@ class ArticleComments extends Component {
         <Header as="h3" dividing>
           Leave a Comment
         </Header>
-
         {articleComments.map(comment => (
           <Comment key={comment.id}>
             <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg" />

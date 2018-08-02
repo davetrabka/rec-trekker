@@ -30,11 +30,7 @@ class Navbar extends Component {
           <a href="https://www.instagram.com/rectrekker" target="_blank">
             <Icon color="teal" name="instagram" className="social-link" />
           </a>
-          <a href="https://www.twitter.com/rectrekker" target="_blank">
-            <Icon color="teal" name="twitter" className="social-link" />
-          </a>
         </Menu.Item>
-
         {!this.props.isLoggedIn ? (
           <Menu.Menu position="right">
             <Menu.Item>

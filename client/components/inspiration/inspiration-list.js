@@ -8,9 +8,9 @@ import { me } from '../../store/user';
 class InspirationList extends Component {
   state = { isLoading: true };
 
-  componentDidMount = async () => {
-    await this.props.loadInitialData();
-    await this.props.fetchArticles();
+  componentDidMount = () => {
+    this.props.loadInitialData();
+    this.props.fetchArticles();
     this.setState({ isLoading: false });
   };
 
