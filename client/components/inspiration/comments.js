@@ -11,8 +11,8 @@ class ArticleComments extends Component {
 
   componentDidMount = async () => {
     await this.props.loadInitialData();
-    const articleId = this.props.articleId;
-    await this.props.gotOneArticle(articleId);
+    const articleSlug = this.props.articleSlug;
+    await this.props.gotOneArticle(articleSlug);
   };
 
   handleChange = evt => {

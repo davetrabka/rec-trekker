@@ -24,11 +24,25 @@ class Navbar extends Component {
           )}
         </Menu.Item>
         <Menu.Item>
-          <a href="https://www.facebook.com/rectrekker" target="_blank">
+          <a
+            href="https://www.facebook.com/rectrekker"
+            target="_blank"
+            rel="noopener noreferrer">
+            >
             <Icon color="teal" name="facebook" className="social-link" />
           </a>
-          <a href="https://www.instagram.com/rectrekker" target="_blank">
+          <a
+            href="https://www.instagram.com/rectrekker"
+            target="_blank"
+            rel="noopener noreferrer">
             <Icon color="teal" name="instagram" className="social-link" />
+          </a>
+          <a
+            href="https://www.twitter.com/rectrekker"
+            target="_blank"
+            rel="noopener noreferrer">
+            >
+            <Icon color="teal" name="twitter" className="social-link" />
           </a>
         </Menu.Item>
         {!this.props.isLoggedIn ? (

@@ -32,11 +32,11 @@ router.post('/:slug/new-comment', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
-  try {
-    const newArticle = await Article.create(req.body);
-    res.json(newArticle);
-  } catch (error) {
-    console.error(error);
-  }
-});
+// router.post('/', async (req, res, next) => {
+//   try {
+//     const newArticle = await Article.create(req.body);
+//     res.json(newArticle);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// });

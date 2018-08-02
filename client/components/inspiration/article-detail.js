@@ -14,15 +14,15 @@ import ArticleComments from './comments';
 class Article extends Component {
   state = { isLoading: true };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const path = window.location.pathname.split('/');
     const slug = path[path.length - 1];
-    this.props.gotOneArticle(slug);
+    await this.props.gotOneArticle(slug);
     this.setState({ isLoading: false });
   };
 
   render() {
-    let { id, title, content, createdAt, user } = this.props.currArticle;
+    let { slug, title, content, createdAt, user } = this.props.currArticle;
     let authorName = user ? `${user.firstName} ${user.lastName}` : 'Anonymous';
 
     return this.state.isLoading ? (
@@ -81,7 +81,7 @@ class Article extends Component {
                 <p>{content}</p>
               </Item.Description>
               <div className="spacer" />
-              <ArticleComments articleId={id} />
+              <ArticleComments articleSlug={slug} />
             </Item.Content>
           </Item>
         </Card>
