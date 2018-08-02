@@ -12,7 +12,7 @@ const LogIn = props => {
       <div>
         <img
           id="background-image"
-          src="./img/mountains.jpg"
+          src="/img/mountains.jpg"
           alt="background image"
         />
       </div>
