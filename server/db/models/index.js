@@ -1,6 +1,6 @@
 const User = require('./user');
 const Article = require('./article');
-const Group = require('./group');
+const Plan = require('./plan');
 const Comment = require('./comment');
 
 Article.belongsTo(User);
@@ -9,12 +9,15 @@ User.hasMany(Article);
 Comment.belongsTo(Article);
 Article.hasMany(Comment);
 
-User.belongsToMany(Group, { through: 'groupMemberships' });
-Group.belongsToMany(User, { through: 'groupMemberships' });
+Comment.belongsTo(Plan);
+Plan.hasMany(Comment);
+
+User.hasMany(Plan);
+Plan.belongsTo(User);
 
 module.exports = {
   User,
   Article,
   Comment,
-  Group,
+  Plan,
 };

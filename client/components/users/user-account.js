@@ -42,7 +42,13 @@ class UserAccount extends Component {
         />
         <Container className="authorization-form">
           <Card className="auth-card">
-            <Card.Content className="auth-card-header">My Account</Card.Content>
+            <Card.Content className="flex-left">
+              <img
+                id="user-photo"
+                src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"
+              />
+              <p className="auth-card-header">My Account</p>
+            </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">

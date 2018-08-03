@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Comment, Form, Header } from 'semantic-ui-react';
-import { gotOneArticle, postedArticleComment } from '../../store/article';
+import { gotOnePlan, postedPlanComment } from '../../store/plan';
 import { me } from '../../store/user';
 
-class ArticleComments extends Component {
-  state = { newComment: '' };
+class PlanDiscussion extends Component {
+  state = {
+    newComment: '',
+  };
 
   componentDidMount = async () => {
     await this.props.loadInitialData();
-    const articleSlug = this.props.articleSlug;
-    await this.props.gotOneArticle(articleSlug);
+    const planUUID = this.props.planUUID;
+    await this.props.gotOnePlan(planUUID);
   };
 
   handleChange = evt => {
@@ -23,26 +25,25 @@ class ArticleComments extends Component {
     evt.preventDefault();
     const comment = this.state.newComment;
     const authorName = this.props.authorName;
-    const articleSlug = this.props.currArticle.slug;
-    const articleId = this.props.currArticle.id;
-    await this.props.postedArticleComment({
+    const planId = this.props.currPlan.id;
+    const planUUID = this.props.currPlan.UUID;
+    await this.props.postedPlanComment({
       comment,
       authorName,
-      articleSlug,
-      articleId,
+      planId,
     });
-    await this.props.gotOneArticle(articleSlug);
+    await this.props.gotOnePlan(planUUID);
     this.setState({ newComment: '' });
   };
 
   render() {
-    const articleComments = this.props.currArticle.comments || [];
+    const planComments = this.props.currPlan.comments || [];
     return (
-      <Comment.Group>
+      <Comment.Group className="two-third-width">
         <Header as="h3" dividing>
-          Leave a Comment
+          Add to the Discussion
         </Header>
-        {articleComments.map(comment => (
+        {planComments.map(comment => (
           <Comment key={comment.id}>
             <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg" />
             <Comment.Content>
@@ -106,18 +107,17 @@ const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
     authorName: state.user.firstName + ' ' + state.user.lastName,
-    currArticle: state.article.currArticle,
+    currPlan: state.plan.currPlan,
   };
 };
 
 const mapDispatch = dispatch => ({
   loadInitialData: () => dispatch(me()),
-  gotOneArticle: id => dispatch(gotOneArticle(id)),
-  postedArticleComment: commentObj =>
-    dispatch(postedArticleComment(commentObj)),
+  gotOnePlan: planUUID => dispatch(gotOnePlan(planUUID)),
+  postedPlanComment: commentObj => dispatch(postedPlanComment(commentObj)),
 });
 
 export default connect(
   mapState,
   mapDispatch
-)(ArticleComments);
+)(PlanDiscussion);

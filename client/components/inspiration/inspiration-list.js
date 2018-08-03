@@ -18,25 +18,13 @@ class InspirationList extends Component {
     return (
       <Container>
         {this.state.isLoading ? (
-          <div>
-            <Loader
-              active
-              inline="centered"
-              size="massive"
-              className="loader"
-            />
-            <img
-              id="background-image"
-              src="./img/surfing.jpeg"
-              alt="background image"
-            />
-          </div>
+          <Loader active inline="centered" size="massive" className="loader" />
         ) : (
           ''
         )}
         <img
           id="background-image"
-          src="./img/surfing.jpeg"
+          src="/img/surfing.jpeg"
           alt="background image"
         />
         {this.props.isAdmin ? (
@@ -49,14 +37,12 @@ class InspirationList extends Component {
         ) : (
           ''
         )}
-        {!this.props.articles.length && !this.state.isLoading ? (
+        {!this.state.isLoading && !this.props.articles.length ? (
           <Card fluid className="no-data-notification">
             <Item>
-              <Item.Content>
-                <Item.Header className="teal-text article-header">
-                  Nothing here... Checkback soon!
-                </Item.Header>
-              </Item.Content>
+              <Item.Header className="teal-text article-header">
+                Nothing here... Checkback soon!
+              </Item.Header>
             </Item>
           </Card>
         ) : (

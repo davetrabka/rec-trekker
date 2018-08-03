@@ -71,7 +71,7 @@ class Navbar extends Component {
             </Menu.Item>
             <Menu.Item>
               <Link to="/plans" className="dark-grey-text">
-                My Plans
+                Explore Plans
               </Link>
             </Menu.Item>
             <Menu.Item>

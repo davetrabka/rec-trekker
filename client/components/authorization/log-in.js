@@ -6,7 +6,6 @@ import { login } from '../../store';
 
 const LogIn = props => {
   const { name, handleSubmit, error } = props;
-
   return (
     <div>
       <div>

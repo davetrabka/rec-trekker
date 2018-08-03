@@ -42,11 +42,11 @@ export const postedArticle = article => async dispatch => {
   }
 };
 
-export const postedArticleComment = comment => async dispatch => {
+export const postedArticleComment = commentObj => async dispatch => {
   try {
     const { data } = await axios.post(
-      '/api/articles/:slug/new-comment',
-      comment
+      `/api/articles/${commentObj.articleSlug}/new-comment`,
+      commentObj
     );
     dispatch(postArticleComment(data));
   } catch (error) {

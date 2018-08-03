@@ -23,7 +23,7 @@ const Article = db.define('article', {
 const generateSlugAndPreview = article => {
   article.preview = article.content.slice(0, 300) + '...';
   article.slug = article.title
-    .replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()@\+\?><\[\]\+]/g, '')
+    .replace(/[.,-/#!$%^&*;:{}=\-_`~()@+?><[]+]/g, '')
     .toLowerCase()
     .split(' ')
     .join('-');

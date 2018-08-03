@@ -1,29 +1,29 @@
 const router = require('express').Router();
-const { Article, Comment } = require('../db/models');
+const { Plan, Comment } = require('../db/models');
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const articles = await Article.findAll({ include: [{ all: true }] });
-    res.json(articles);
+    const plans = await Plan.findAll({ include: [{ all: true }] });
+    res.json(plans);
   } catch (error) {
     console.error(error);
   }
 });
 
-router.get('/:slug', async (req, res, next) => {
+router.get('/:planUUID', async (req, res, next) => {
   try {
-    const article = await Article.findOne({
-      where: { slug: req.params.slug },
+    const plan = await Plan.findOne({
+      where: { UUID: req.params.planUUID },
       include: [{ all: true }],
     });
-    res.json(article);
+    res.json(plan);
   } catch (error) {
     console.error(error);
   }
 });
 
-router.post('/:slug/new-comment', async (req, res, next) => {
+router.post('/:planUUID/new-comment', async (req, res, next) => {
   try {
     const comment = await Comment.create(req.body);
     res.json(comment);
@@ -34,8 +34,8 @@ router.post('/:slug/new-comment', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const newArticle = await Article.create(req.body);
-    res.json(newArticle);
+    const newPlan = await Plan.create(req.body);
+    res.json(newPlan);
   } catch (error) {
     console.error(error);
   }

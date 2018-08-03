@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Group = db.define('groups', {
+const Plan = db.define('plan', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -10,10 +10,19 @@ const Group = db.define('groups', {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
-  description: {
+  shortDescription: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  longDescription: {
     type: Sequelize.TEXT,
     allowNull: false,
   },
+  UUID: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV1,
+    unique: true,
+  },
 });
 
-module.exports = Group;
+module.exports = Plan;

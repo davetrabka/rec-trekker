@@ -6,3 +6,5 @@ export { default as UserHome } from './users/user-home';
 export { default as UserAccount } from './users/user-account';
 export { default as InspirationList } from './inspiration/inspiration-list';
 export { default as Article } from './inspiration/article-detail';
+export { default as PlansList } from './plans/plans-list';
+export { default as Plan } from './plans/plan-detail';

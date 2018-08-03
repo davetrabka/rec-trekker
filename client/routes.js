@@ -10,6 +10,8 @@ import {
   InspirationList,
   Article,
   UserAccount,
+  PlansList,
+  Plan,
 } from './components';
 import { me } from './store';
 
@@ -34,6 +36,9 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
             <Route exact path="/users/:userId" component={UserAccount} />
+            <Route exact path="/plans" component={PlansList} />
+            <Route exact path="/plans/:planUUID" component={Plan} />
+            {/* <Route exact path="/users/:userId/my-plans" component={PlansList} /> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

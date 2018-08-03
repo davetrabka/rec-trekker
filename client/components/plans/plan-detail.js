@@ -7,31 +7,39 @@ import {
   Divider,
   Icon,
   Loader,
+  Header,
 } from 'semantic-ui-react';
-import { gotOneArticle } from '../../store/article';
-import ArticleComments from './comments';
+import { gotOnePlan } from '../../store/plan';
+import PlanDiscussion from './discussion';
+import PlanCalendar from './calendar';
 
-class Article extends Component {
+class Plan extends Component {
   state = { isLoading: true };
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const path = window.location.pathname.split('/');
-    const slug = path[path.length - 1];
-    await this.props.gotOneArticle(slug);
+    const planUUID = path[path.length - 1];
+    this.props.gotOnePlan(planUUID);
     this.setState({ isLoading: false });
   };
 
   render() {
-    let { slug, title, content, createdAt, user } = this.props.currArticle;
+    let {
+      name,
+      planUUID,
+      longDescription,
+      createdAt,
+      user,
+    } = this.props.currPlan;
     let authorName = user ? `${user.firstName} ${user.lastName}` : 'Anonymous';
 
     return this.state.isLoading ? (
       <Loader active inline="centered" size="massive" className="loader" />
     ) : (
-      <Container text>
+      <Container>
         <img
           id="background-image"
-          src="/img/ocean.jpeg"
+          src="/img/lake.jpeg"
           alt="background image"
         />
         <Card fluid className="article-card">
@@ -39,7 +47,7 @@ class Article extends Component {
             <Item.Content>
               <div className="flex-space-between">
                 <Item.Header className="teal-text article-header">
-                  {title}
+                  {name}
                 </Item.Header>
                 <Item.Meta>
                   <span className="teal-text share-this">Share:</span>
@@ -59,22 +67,21 @@ class Article extends Component {
                   </a>
                 </Item.Meta>
               </div>
-              <div className="flex-space-between">
-                <Item.Meta>{authorName}</Item.Meta>
-                <Item.Meta>
-                  {new Date(createdAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </Item.Meta>
-              </div>
               <Divider />
-              <Item.Description>
-                <p>{content}</p>
-              </Item.Description>
+              <Item.Group className="plan-long-description">
+                <Header as="h3" dividing>
+                  Description
+                </Header>
+                <Item.Description>
+                  <p>{longDescription}</p>
+                </Item.Description>
+              </Item.Group>
               <div className="spacer" />
-              <ArticleComments articleSlug={slug} />
+              <div className="flex-center">
+                <PlanDiscussion planUUID={planUUID} />
+                <PlanCalendar planUUID={planUUID} />
+              </div>
+              <br />
             </Item.Content>
           </Item>
         </Card>
@@ -84,14 +91,14 @@ class Article extends Component {
 }
 
 const mapState = state => ({
-  currArticle: state.article.currArticle,
+  currPlan: state.plan.currPlan,
 });
 
 const mapDisptach = dispatch => ({
-  gotOneArticle: id => dispatch(gotOneArticle(id)),
+  gotOnePlan: planUUID => dispatch(gotOnePlan(planUUID)),
 });
 
 export default connect(
   mapState,
   mapDisptach
-)(Article);
+)(Plan);
