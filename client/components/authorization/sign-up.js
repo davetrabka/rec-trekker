@@ -24,25 +24,39 @@ const SignUp = props => {
               <Form.Group widths="equal">
                 <Form.Field>
                   <label htmlFor="firstName">First Name</label>
-                  <input
-                    name="firstName"
-                    type="text"
-                    placeholder="First Name"
-                  />
+                  <input name="firstName" type="text" placeholder="Johnny" />
                 </Form.Field>
                 <Form.Field>
                   <label htmlFor="lastName">Last Name</label>
-                  <input name="lastName" type="text" placeholder="Last Name" />
+                  <input name="lastName" type="text" placeholder="Applseed" />
                 </Form.Field>
               </Form.Group>
               <Form.Group widths="equal">
                 <Form.Field>
                   <label htmlFor="email">Email</label>
-                  <input name="email" type="text" placeholder="Email" />
+                  <input
+                    name="email"
+                    type="text"
+                    placeholder="example@email.com"
+                  />
                 </Form.Field>
                 <Form.Field>
+                  <label htmlFor="username">Username</label>
+                  <input name="username" type="text" placeholder="Username" />
+                </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Field>
                   <label htmlFor="password">Password</label>
-                  <input name="password" type="text" placeholder="Password" />
+                  <input
+                    name="password"
+                    type="text"
+                    placeholder="Your password"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Confirm Password</label>
+                  <input type="text" placeholder="Confirm your password" />
                 </Form.Field>
               </Form.Group>
               <Button

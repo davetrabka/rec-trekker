@@ -22,7 +22,7 @@ const LogIn = props => {
             <Form onSubmit={handleSubmit} name={name}>
               <Form.Group widths="equal">
                 <Form.Field>
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">Username</label>
                   <input name="email" type="text" placeholder="Email" />
                 </Form.Field>
                 <Form.Field>
