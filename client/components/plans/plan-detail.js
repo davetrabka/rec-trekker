@@ -24,14 +24,7 @@ class Plan extends Component {
   };
 
   render() {
-    let {
-      name,
-      planUUID,
-      longDescription,
-      createdAt,
-      user,
-    } = this.props.currPlan;
-    let authorName = user ? `${user.firstName} ${user.lastName}` : 'Anonymous';
+    let { name, planUUID, longDescription } = this.props.currPlan;
 
     return this.state.isLoading ? (
       <Loader active inline="centered" size="massive" className="loader" />
